@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessControlQR.API", "AccessControlQR.API\AccessControlQR.API.csproj", "{8B5398FA-634A-4366-8A2A-B04654161AA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessControlQR.Application", "AccessControlQR.Application\AccessControlQR.Application.csproj", "{D8A019E8-05F5-420A-A033-2D39727FD932}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessControlQR.Infrastructure", "AccessControlQR.Infrastructure\AccessControlQR.Infrastructure.csproj", "{505B17D1-077A-40A1-877F-A936EC898DA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessControlQR.Domain", "AccessControlQR.Domain\AccessControlQR.Domain.csproj", "{F932CCDF-78BE-4444-8EC7-3F6E3008DB79}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B5398FA-634A-4366-8A2A-B04654161AA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B5398FA-634A-4366-8A2A-B04654161AA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B5398FA-634A-4366-8A2A-B04654161AA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B5398FA-634A-4366-8A2A-B04654161AA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8A019E8-05F5-420A-A033-2D39727FD932}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8A019E8-05F5-420A-A033-2D39727FD932}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8A019E8-05F5-420A-A033-2D39727FD932}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8A019E8-05F5-420A-A033-2D39727FD932}.Release|Any CPU.Build.0 = Release|Any CPU
+		{505B17D1-077A-40A1-877F-A936EC898DA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{505B17D1-077A-40A1-877F-A936EC898DA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{505B17D1-077A-40A1-877F-A936EC898DA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{505B17D1-077A-40A1-877F-A936EC898DA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F932CCDF-78BE-4444-8EC7-3F6E3008DB79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F932CCDF-78BE-4444-8EC7-3F6E3008DB79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F932CCDF-78BE-4444-8EC7-3F6E3008DB79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F932CCDF-78BE-4444-8EC7-3F6E3008DB79}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
