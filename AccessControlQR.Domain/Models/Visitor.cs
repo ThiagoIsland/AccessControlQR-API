@@ -9,11 +9,10 @@ public partial class Visitor
 
     public string Name { get; set; } = null!;
 
-    public string Email { get; set; } = null!;
+    public string Email { get; set; }
 
     public string? Phone { get; set; }
 
-    public string QRCode { get; set; } = null!;
     public string? Status { get; set; }
 
     public DateTime? CreatedAt { get; set; }
@@ -22,19 +21,6 @@ public partial class Visitor
 
     public virtual ICollection<AccessRecord> AccessRecords { get; set; } = new List<AccessRecord>();
     
-    public string GetQRCode()
-    {
-        return QRCode;
-    }
     
-    public void SetQRCode(string qrCode)
-    {
-        if (string.IsNullOrEmpty(qrCode))
-        {
-            throw new ArgumentException("QRCode cannot be empty.");
-        }
-
-        QRCode = qrCode;
-    }
 
 }

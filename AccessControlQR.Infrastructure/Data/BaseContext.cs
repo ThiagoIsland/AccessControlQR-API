@@ -82,7 +82,6 @@ public partial class BaseContext : DbContext
 
             entity.HasIndex(e => e.Email, "Visitors_Email_key").IsUnique();
 
-            entity.HasIndex(e => e.QRCode, "Visitors_QRCode_key").IsUnique();
 
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")
@@ -90,7 +89,6 @@ public partial class BaseContext : DbContext
             entity.Property(e => e.Email).HasMaxLength(100);
             entity.Property(e => e.Name).HasMaxLength(100);
             entity.Property(e => e.Phone).HasMaxLength(20);
-            entity.Property(e => e.QRCode).HasColumnName("QRCode");
             entity.Property(e => e.Status)
                 .HasMaxLength(20)
                 .HasDefaultValueSql("'Pending'::character varying");

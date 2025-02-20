@@ -18,12 +18,12 @@ public class VisitorRepository : IVisitorRepository
     {
         return await _context.Visitors.FindAsync(id);
     }
-
-    public async Task<Visitor> GetByQRCodeAsync(string qrCode)
+    
+    public async Task<Visitor> GetByEmailAsync(string email)
     {
-        return await _context.Visitors
-            .FirstOrDefaultAsync(v => v.QRCode == qrCode);
+        return await _context.Visitors.FirstOrDefaultAsync(prop => prop.Email == email);
     }
+    
 
     public async Task<IEnumerable<Visitor>> GetAllAsync()
     {

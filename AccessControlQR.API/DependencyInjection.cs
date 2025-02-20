@@ -15,8 +15,13 @@ public static class DependencyInjection
         services.AddDbContext<BaseContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
         services.AddTransient<IAuthService, AuthService>();
+
         services.AddTransient<IUserRepository, UserRepository>();
         services.AddTransient<IUserService, UserService>();
+        
+        services.AddTransient<IVisitorRepository, VisitorRepository>();
+        services.AddTransient<IVisitorService, VisitorService>();
+
         return services;
     }
 
