@@ -29,7 +29,7 @@ public class UserService : IUserService
             UpdatedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Unspecified)
         };
 
-        // user.SetPassword(registerUserDto.Password);
+        user.SetPassword(registerUserDto.Password);
         await _userRepository.AddAsync(user);
         
         return true;
