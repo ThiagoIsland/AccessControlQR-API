@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AcessControlQR.Domain.Models;
 
-public partial class User
+public class User
 {
     public int Id { get; set; }
 

@@ -22,6 +22,9 @@ public static class DependencyInjection
         services.AddTransient<IVisitorRepository, VisitorRepository>();
         services.AddTransient<IVisitorService, VisitorService>();
 
+        services.AddTransient<IQrCodeRepository, QrCodeRepository>();
+        services.AddTransient<IQrCodeService, QrCodeService>();
+
         return services;
     }
 

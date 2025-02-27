@@ -19,11 +19,11 @@ public class UserController : ControllerBase
         _context = baseContext;
     }
     
-    [HttpGet("teste")]
+    [HttpGet("test")]
     public IActionResult GetBancoTest()
     {
         var test = _context.Database.CanConnect();
-        return Content($"Conexão com o banco: {test}");
+        return Content($"Database connection: {test}");
     }
     
     [HttpPost("register")]
@@ -34,8 +34,8 @@ public class UserController : ControllerBase
 
         bool success = await _userService.RegisterUserAsync(registerUserDto);
         if (!success)
-            return BadRequest(new { message = "Usuário já existe." });
+            return BadRequest(new { message = "User already exist" });
 
-        return Ok(new { message = "Usuário cadastrado com sucesso." });
+        return Ok(new { message = "User sucessfully registered." });
     }
 }

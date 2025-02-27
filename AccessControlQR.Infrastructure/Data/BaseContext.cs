@@ -22,6 +22,8 @@ public partial class BaseContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     public virtual DbSet<Visitor> Visitors { get; set; }
+    public virtual DbSet<VisitorsQrCode> VisitorsQrCodes { get; set; }
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -96,7 +98,25 @@ public partial class BaseContext : DbContext
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")
                 .HasColumnType("timestamp without time zone");
         });
+        
+        modelBuilder.Entity<VisitorsQrCode>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("VisitorsQrCode_pkey");
 
+            entity.ToTable("VisitorsQrCode");
+
+            entity.HasIndex(e => e.Email, "VisitorsQrCode_Email_key").IsUnique();
+
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP")
+                .HasColumnType("timestamp without time zone");
+            entity.Property(e => e.Email).HasMaxLength(100);
+            entity.Property(e => e.Name).HasMaxLength(100);
+            entity.Property(e => e.QrCode).HasMaxLength(150);
+            entity.Property(e => e.UpdatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP")
+                .HasColumnType("timestamp without time zone");
+        });
         OnModelCreatingPartial(modelBuilder);
     }
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

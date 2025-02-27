@@ -24,7 +24,6 @@ public class VisitorRepository : IVisitorRepository
         return await _context.Visitors.FirstOrDefaultAsync(prop => prop.Email == email);
     }
     
-
     public async Task<IEnumerable<Visitor>> GetAllAsync()
     {
         return await _context.Visitors.ToListAsync();

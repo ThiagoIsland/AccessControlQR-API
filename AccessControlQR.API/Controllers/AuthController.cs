@@ -17,11 +17,11 @@ public class AuthController : ControllerBase
     }
     
     
-    [HttpGet("teste")]
+    [HttpGet("test")]
     public IActionResult GetBancoTest()
     {
         var test = _context.Database.CanConnect();
-        return Content($"Conexão com o banco: {test}");
+        return Content($"Database connection: {test}");
     }
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginDTO loginDto)
@@ -31,7 +31,7 @@ public class AuthController : ControllerBase
         
         var token = await _authService.AuthenticateAsync(loginDto.Username, loginDto.Password);
         if (token == null)
-            return Unauthorized(new { message = "Usuário ou senha inválidos." });
+            return Unauthorized(new { message = "User or password invalid." });
         
         return Ok(new { token });
     }

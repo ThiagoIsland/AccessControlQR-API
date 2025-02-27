@@ -9,10 +9,12 @@ namespace AccessControlQR.API.Controllers;
 public class VisitorController : ControllerBase
 {
     private readonly IVisitorService _visitorService;
+    private readonly IQrCodeService _codeService;
 
-    public VisitorController(IVisitorService visitorService) 
+    public VisitorController(IVisitorService visitorService, IQrCodeService codeService) 
     {
         _visitorService = visitorService;
+        _codeService = codeService;
     }
 
     [HttpPost("register")]
@@ -20,7 +22,15 @@ public class VisitorController : ControllerBase
     {
         var success = await _visitorService.RegisterVisitor(registerVisitorDto);
         
-        return Ok(new { message = "Usuário cadastrado com sucesso." });
+        return Ok(new { message = "User sucessfully registered." });
+    }
+    
+    [HttpPost("generate")]
+    public async Task<IActionResult> GenerateQr([FromBody] RegisterQrCodeDTO registerQrCodeDto)
+    {
+        var success = await _codeService.GenerateQrCode(registerQrCodeDto);
+        
+        return Ok(new { message = "QRCode sucessfully generated." });
     }
 
 }

@@ -7,9 +7,8 @@ namespace AcessControlQR.Application.Services;
 public class VisitorService : IVisitorService
 {
     private readonly IVisitorRepository _repository;
-    private readonly IQRCodeService _qrCodeService;
 
-    public VisitorService(IVisitorRepository repository, IQRCodeService qrCodeService)
+    public VisitorService(IVisitorRepository repository, IQrCodeService qrCodeService)
     {
         _repository = repository;
     }
@@ -18,8 +17,7 @@ public class VisitorService : IVisitorService
     {
         var existingVisitor = await _repository.GetByEmailAsync(registerVisitor.Email);
         if (existingVisitor != null && existingVisitor.Email == registerVisitor.Email)
-            throw new Exception("Visitante já cadastrado.");
-
+            throw new Exception("Visitor already registered");
 
         Visitor visitor = new Visitor
         {
@@ -35,7 +33,7 @@ public class VisitorService : IVisitorService
         
         return new RegisterVisitorResponseDTO
         {
-            Message = "Visitante cadastrado com sucesso.",
+            Message = "Visitor sucessfully registered",
             VisitorId = visitor.Id,
         };
     }

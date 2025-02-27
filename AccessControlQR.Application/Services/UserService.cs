@@ -17,7 +17,7 @@ public class UserService : IUserService
     {
         var existingUser = await _userRepository.GetByUsernameAsync(registerUserDto.Username);
         if (existingUser != null)
-            return false;
+            throw new Exception("User already registered.");
         
         var user = new User
         {
