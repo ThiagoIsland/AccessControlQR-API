@@ -19,12 +19,6 @@ public class UserController : ControllerBase
         _context = baseContext;
     }
     
-    [HttpGet("test")]
-    public IActionResult GetBancoTest()
-    {
-        var test = _context.Database.CanConnect();
-        return Content($"Database connection: {test}");
-    }
     
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterUserDTO registerUserDto)

@@ -13,15 +13,17 @@ public class AccessRecordRepository : IAccessRecordRepository
     {
         _context = context;
     }
-
-    public async Task<AccessRecord> GetByIdAsync(int id)
+    public async Task<string> GetStatus(int IDVisitor)
     {
-        return await _context.AccessRecords.FindAsync(id);
+        var status = await _context.Visitors.FindAsync(IDVisitor);
+        return status.Status;
     }
 
-    public async Task<IEnumerable<AccessRecord>> GetAllAsync()
+    public async Task<int> GetUserID(string name)
     {
-        return await _context.AccessRecords.ToListAsync();
+        var userId = await _context.Users.FirstOrDefaultAsync(prop => prop.Username == name);
+
+        return userId.Id;
     }
 
     public async Task AddAsync(AccessRecord accessRecord)

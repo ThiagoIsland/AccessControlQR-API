@@ -6,7 +6,7 @@ namespace AcessControlQR.Application.Interfaces;
 public interface IQrCodeService
 {
 
-    public Task<RegisterQrCodeRespondeDTO> GenerateQrCode(RegisterQrCodeDTO registerQrCodeDto);
+    public Task<QrCodeResponseDTO> GenerateQrCode(RegisterQrCodeDTO registerQrCodeDto);
     public Task<object> GetQrCode(string name);
     public Task<QrCodeResponseDTO> ValidatedQrCode(string scannedQrCode, int id);
 

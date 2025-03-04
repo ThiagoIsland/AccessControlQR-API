@@ -12,7 +12,7 @@ public class QrCodeService : IQrCodeService
         _qrCodeRepository = qrCodeRepository;
     }
     
-    public async Task<RegisterQrCodeRespondeDTO> GenerateQrCode(RegisterQrCodeDTO registerQrCodeDto)
+    public async Task<QrCodeResponseDTO> GenerateQrCode(RegisterQrCodeDTO registerQrCodeDto)
     {
         var existingName = _qrCodeRepository.GetVisitorByName(registerQrCodeDto.Name);
         if (existingName == null) 
@@ -37,7 +37,7 @@ public class QrCodeService : IQrCodeService
 
          await _qrCodeRepository.AddAsync(visitorQrCode);
         
-         return new RegisterQrCodeRespondeDTO
+         return new QrCodeResponseDTO
          {
              Message = "QRCode sucessfully generated"
          };    

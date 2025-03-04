@@ -25,6 +25,10 @@ public static class DependencyInjection
         services.AddTransient<IQrCodeRepository, QrCodeRepository>();
         services.AddTransient<IQrCodeService, QrCodeService>();
 
+        services.AddTransient<IAccessRecordRepository, AccessRecordRepository>();
+        services.AddTransient<IAccessControlService, AccessControlService>();
+        
+
         return services;
     }
 

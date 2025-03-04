@@ -22,7 +22,7 @@ public class UserRepository : IUserRepository
     public async Task<User> GetByUsernameAsync(string username)
     {
         return await _context.Users
-            .FirstOrDefaultAsync(u => u.Username == username);
+            .FirstOrDefaultAsync(prop => prop.Username == username);
     }
 
     public async Task<IEnumerable<User>> GetAllAsync()

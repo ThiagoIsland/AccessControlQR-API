@@ -10,11 +10,13 @@ public class VisitorController : ControllerBase
 {
     private readonly IVisitorService _visitorService;
     private readonly IQrCodeService _codeService;
+    private readonly IAccessControlService _recordservice;
 
-    public VisitorController(IVisitorService visitorService, IQrCodeService codeService) 
+    public VisitorController(IVisitorService visitorService, IQrCodeService codeService, IAccessControlService recordService) 
     {
         _visitorService = visitorService;
         _codeService = codeService;
+        _recordservice = recordService;
     }
 
     [HttpPost("register")]
@@ -34,10 +36,11 @@ public class VisitorController : ControllerBase
         return Ok(new { message = "QRCode sucessfully generated." });
     }
 
-    [HttpGet("validate")]
-    public async Task<IActionResult> ValidateQr(string scannedQrCode, int id)
+    [HttpGet("validateAccess")]
+    public async Task<IActionResult> ValidateQr(string scannedQrCode, int idVisitor, string user, string accessType)
     {
-        var validate = await _codeService.ValidatedQrCode(scannedQrCode, id);
+        var validate = await _codeService.ValidatedQrCode(scannedQrCode, idVisitor);
+        var record = await _recordservice.RecordAccess(idVisitor, accessType, user);
 
         return Ok(validate);
     }

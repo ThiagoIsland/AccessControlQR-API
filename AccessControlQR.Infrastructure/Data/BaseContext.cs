@@ -18,9 +18,7 @@ public partial class BaseContext : DbContext
     }
 
     public virtual DbSet<AccessRecord> AccessRecords { get; set; }
-
     public virtual DbSet<User> Users { get; set; }
-
     public virtual DbSet<Visitor> Visitors { get; set; }
     public virtual DbSet<VisitorsQrCode> VisitorsQrCodes { get; set; }
 
