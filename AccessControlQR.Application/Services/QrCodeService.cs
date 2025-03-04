@@ -56,8 +56,11 @@ public class QrCodeService : IQrCodeService
     {
 
         var status = await _qrCodeRepository.ValidateStatus(id);
-        if(status != "Approved")
-            throw new Exception("User status isn't approved yet");
+         if(status != "Approved")
+            return new QrCodeResponseDTO()
+            {
+                Message = "User status isn't approved yet"
+            };
         
         var validation = await _qrCodeRepository.GetQrCodeByScanned(scannedQrCode);
         if (validation == null)
