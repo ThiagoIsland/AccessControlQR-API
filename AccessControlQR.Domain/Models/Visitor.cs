@@ -9,7 +9,7 @@ public partial class Visitor
 
     public string Name { get; set; } = null!;
 
-    public string Email { get; set; }
+    public string Email { get; set; } = null!;
 
     public string? Phone { get; set; }
 
@@ -22,5 +22,4 @@ public partial class Visitor
     public virtual ICollection<AccessRecord> AccessRecords { get; set; } = new List<AccessRecord>();
     
     
-
 }

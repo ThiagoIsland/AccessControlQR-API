@@ -24,6 +24,7 @@ public class VisitorController : ControllerBase
         
         return Ok(new { message = "User sucessfully registered." });
     }
+
     
     [HttpPost("generate")]
     public async Task<IActionResult> GenerateQr([FromBody] RegisterQrCodeDTO registerQrCodeDto)
@@ -31,6 +32,22 @@ public class VisitorController : ControllerBase
         var success = await _codeService.GenerateQrCode(registerQrCodeDto);
         
         return Ok(new { message = "QRCode sucessfully generated." });
+    }
+
+    [HttpGet("validate")]
+    public async Task<IActionResult> ValidateQr(string scannedQrCode, int id)
+    {
+        var validate = await _codeService.ValidatedQrCode(scannedQrCode, id);
+
+        return Ok(validate);
+    }
+
+    [HttpGet("get")]
+    public async Task<IActionResult> GetQr(string name)
+    {
+        var QrCode = await _codeService.GetQrCode(name);
+
+        return Ok(QrCode);
     }
 
 }
