@@ -7,7 +7,7 @@ public class VisitorsQrCode
 
     public string Email { get; set; } = null!;
 
-    public string? QrCode { get; set; }
+    public string QrCode { get; set; } = null!;
 
     public DateTime? CreatedAt { get; set; }
 

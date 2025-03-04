@@ -43,26 +43,35 @@ public class QrCodeService : IQrCodeService
          };    
 
     }
-    public async Task<string> GetQrCode(string name)
+    public async Task<object> GetQrCode(string name)
     {
         var content = await _qrCodeRepository.GetQrCode(name);
         if (content == null)
             throw new Exception("Visitor doesn't exist");
 
+        // return new QrCodeResponseDTO
+        // {
+        //     QrCode = content
+        // }; 
         return content;
     }
 
-    public async Task<string> ValidatedQrCode(string scannedQrCode, int id)
+    public async Task<QrCodeResponseDTO> ValidatedQrCode(string scannedQrCode, int id)
     {
-        var validation = await _qrCodeRepository.GetQrCode(scannedQrCode);
-        if (validation == null)
-          throw new Exception("QR Code doesn't exist");
 
         var status = await _qrCodeRepository.ValidateStatus(id);
         if(status != "Approved")
             throw new Exception("User status isn't approved yet");
+        
+        var validation = await _qrCodeRepository.GetQrCodeByScanned(scannedQrCode);
+        if (validation == null)
+            throw new Exception("QR Code doesn't exist");
 
-        return validation;
+        return new QrCodeResponseDTO
+        {
+            Message = "QRCode sucessfully validated",
+            QrCode = validation
+        };
     }
 
 

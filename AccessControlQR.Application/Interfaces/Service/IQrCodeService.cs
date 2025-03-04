@@ -7,8 +7,8 @@ public interface IQrCodeService
 {
 
     public Task<RegisterQrCodeRespondeDTO> GenerateQrCode(RegisterQrCodeDTO registerQrCodeDto);
-    public Task<string> GetQrCode(string name);
-    public Task<string> ValidatedQrCode(string scannedQrCode, int id);
+    public Task<object> GetQrCode(string name);
+    public Task<QrCodeResponseDTO> ValidatedQrCode(string scannedQrCode, int id);
 
 
 }

@@ -1,6 +1,7 @@
 using AcessControlQR.Application.Interfaces;
 using AcessControlQR.Domain.Models;
 using AcessControlQR.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace AcessControlQR.Infrastructure.Repository;
 
@@ -27,9 +28,10 @@ public class QrCodeRepository : IQrCodeRepository
         return status.Status;
     }
     
-    public async Task<VisitorsQrCode> GetQrCodeByScanned(string scannedQrCode)
+    public async Task<string> GetQrCodeByScanned(string scannedQrCode)
     {
-        return await _context.VisitorsQrCodes.FindAsync(scannedQrCode);
+        var qrcode = await _context.VisitorsQrCodes.FirstOrDefaultAsync(prop => prop.QrCode == scannedQrCode);
+        return qrcode.QrCode;
     }
     public async Task<int?> GetIdUser(int id)
     {
@@ -39,7 +41,7 @@ public class QrCodeRepository : IQrCodeRepository
 
     public async Task<string> GetQrCode(string name)
     {
-        var content = await _context.VisitorsQrCodes.FindAsync(name);
+        var content = await _context.VisitorsQrCodes.FirstOrDefaultAsync(prop => prop.Name == name);
         return content.QrCode;
     }
 
