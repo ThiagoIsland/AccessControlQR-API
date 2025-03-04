@@ -48,11 +48,7 @@ public class QrCodeService : IQrCodeService
         var content = await _qrCodeRepository.GetQrCode(name);
         if (content == null)
             throw new Exception("Visitor doesn't exist");
-
-        // return new QrCodeResponseDTO
-        // {
-        //     QrCode = content
-        // }; 
+        
         return content;
     }
 

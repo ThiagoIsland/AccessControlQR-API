@@ -17,7 +17,4 @@ public partial class AccessRecord
 
     public string Status { get; set; } = null!;
 
-    public virtual User? User { get; set; }
-
-    public virtual Visitor? Visitor { get; set; }
 }

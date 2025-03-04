@@ -47,16 +47,6 @@ public partial class BaseContext : DbContext
                 .HasColumnType("timestamp without time zone");
             entity.Property(e => e.AccessType).HasMaxLength(20);
             entity.Property(e => e.Status).HasMaxLength(20);
-
-            entity.HasOne(d => d.User).WithMany(p => p.AccessRecords)
-                .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("AccessRecords_UserId_fkey");
-
-            entity.HasOne(d => d.Visitor).WithMany(p => p.AccessRecords)
-                .HasForeignKey(d => d.VisitorId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("AccessRecords_VisitorId_fkey");
         });
 
         modelBuilder.Entity<User>(entity =>
