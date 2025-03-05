@@ -1,6 +1,6 @@
 # AccessControlQRCode API
 
-## Descrição
+## Description
 
 AccessControlQRCode-API it's RESTful API responsable for all the back-end features, doing the system management using QR Codes. This API allows the Register users and visitors, generate the code for QR Code, and to validate visitors access.
 
@@ -44,7 +44,7 @@ dotnet ef database update
 dotnet run
 ```
 
-## Endpoints Principais
+## Endpoints
 
 **-> Autenticação**
 
@@ -78,7 +78,7 @@ Request Body:
   "username": "string",
   "email": "user@example.com",
   "password": "string",
-  "role": "Operator"
+  "role": "operator"
 }
 ```
 
@@ -87,7 +87,7 @@ Response:
 {
   "id": 1,
   "username": "string",
-  "role": "Operator"
+  "role": "operator"
 }
 ```
 **-> Visitors**
@@ -119,7 +119,7 @@ GET /api/Visitor/validateAccess
 
 GET /api/Visitor/get
 
-## Autenticação com JWT
+## JWT Auth
 
 Para acessar endpoints protegidos, envie o token JWT no cabeçalho da requisição:
 
