@@ -2,6 +2,7 @@ using AcessControlQR.Application.Interfaces;
 using AcessControlQR.Application.Services;
 using AcessControlQR.Domain.DTO;
 using AcessControlQR.Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AccessControlQR.API.Controllers;
@@ -19,8 +20,7 @@ public class UserController : ControllerBase
         _context = baseContext;
     }
     
-    
-    [HttpPost("register")]
+     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterUserDTO registerUserDto)
     {
         if (!ModelState.IsValid)

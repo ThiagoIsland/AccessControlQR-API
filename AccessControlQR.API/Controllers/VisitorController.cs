@@ -1,10 +1,12 @@
 using AcessControlQR.Application.Interfaces;
 using AcessControlQR.Domain.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AccessControlQR.API.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("api/[controller]")]
 public class VisitorController : ControllerBase
 {
@@ -18,7 +20,6 @@ public class VisitorController : ControllerBase
         _codeService = codeService;
         _recordservice = recordService;
     }
-
     [HttpPost("register")]
     public async Task<IActionResult> RegisterVisitor([FromBody] RegisterVisitorDTO registerVisitorDto)
     {
@@ -27,7 +28,6 @@ public class VisitorController : ControllerBase
         return Ok(new { message = "User sucessfully registered." });
     }
 
-    
     [HttpPost("generate")]
     public async Task<IActionResult> GenerateQr([FromBody] RegisterQrCodeDTO registerQrCodeDto)
     {
@@ -35,7 +35,6 @@ public class VisitorController : ControllerBase
         
         return Ok(new { message = "QRCode sucessfully generated." });
     }
-
     [HttpGet("validateAccess")]
     public async Task<IActionResult> ValidateQr(string scannedQrCode, int idVisitor, string user, string accessType)
     {
@@ -44,7 +43,6 @@ public class VisitorController : ControllerBase
 
         return Ok(validate);
     }
-
     [HttpGet("get")]
     public async Task<IActionResult> GetQr(string name)
     {
