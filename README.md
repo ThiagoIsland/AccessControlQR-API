@@ -7,7 +7,7 @@ AccessControlQRCode-API it's RESTful API responsable for all the back-end featur
 The Front-End for this applcation resides in this repository: [Front-End](https://github.com/ThiagoIsland/AccessControlQR-Web)
 ## Technologies Used
 
-Languagem: C#
+Language: C#
 
 Framework (Back-End): .NET 8
 
@@ -46,7 +46,7 @@ dotnet run
 
 ## Endpoints
 
-**-> Autenticação**
+**-> Auth**
 
 Login
 
